@@ -1,0 +1,25 @@
+{
+	"name": "electron-sticky-notes",
+	"version": "1.0.0",
+	"main": "app.js",
+	"scripts": {
+		"start": "electron .",
+		"build": "electron-builder"
+	},
+	"build": {
+		"win": {
+			"icon": "icon.png"
+		},
+		"linux": {
+			"icon": "icon.png"
+		}
+	},
+	"keywords": [],
+	"author": "Giordano de Brito",
+	"license": "ISC",
+	"description": "Personal sticky notes project.",
+	"devDependencies": {
+		"electron": "^31.2.1",
+		"electron-builder": "^24.13.3"
+	}
+}

@@ -1,0 +1,23 @@
+
+:root {
+	--color-background-dark: #282828;
+	--color-main: #0d910d;
+}
+
+html, body {
+	margin: 0;
+	height: 100%;
+}
+
+* {
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-main) var(--color-background-dark);
+	font-size: 1em;
+	font-family: lexend;
+}
+
+@font-face {
+	font-family: lexend;
+	src: url(public/lexend.ttf);
+}
