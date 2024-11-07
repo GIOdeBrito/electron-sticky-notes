@@ -16,7 +16,12 @@ header {
 	height: 40px;
 	display: flex;
 	justify-content: end;
+}
+
+header > div[role="drag-area"] {
+	-webkit-user-select: none;
 	-webkit-app-region: drag;
+	flex-grow: 1;
 }
 
 header > img {
