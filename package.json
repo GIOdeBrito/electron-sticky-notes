@@ -1,15 +1,12 @@
 {
-	"name": "electron-sticky-notes",
+	"name": "StickyNotes",
 	"version": "1.0.0",
-	"main": "app.js",
+	"main": "app.cjs",
 	"scripts": {
 		"start": "electron .",
 		"build": "electron-builder"
 	},
 	"build": {
-		"win": {
-			"icon": "icon.png"
-		},
 		"linux": {
 			"icon": "icon.png"
 		}
@@ -18,6 +15,9 @@
 	"author": "Giordano de Brito",
 	"license": "ISC",
 	"description": "Personal sticky notes project.",
+	"dependencies": {
+		"sqlite3": "5.1.7"
+	},
 	"devDependencies": {
 		"electron": "^31.2.1",
 		"electron-builder": "^24.13.3"

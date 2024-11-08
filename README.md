@@ -1,8 +1,8 @@
 
 # Electron Sticky Notes
 
-This is a personal sticky notes project I made to mimicry another program
-I used to use years agone. It is a real hassle to make it work on my Linux Mint
+This is a personal sticky notes project I made to mimicry another program, Windows Sticky Notes,
+that I have used to use years agone. It is a real hassle to make it work on my Linux Mint now
 so I decided to make my own version of it.
 
 # Build application

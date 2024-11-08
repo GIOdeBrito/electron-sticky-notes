@@ -1,9 +1,12 @@
 
 /* Main file for sticky notes */
 
+import configureApplication from "./config.js";
+
 window.addEventListener('load', function ()
 {
 	defineControls();
+	configureApplication();
 });
 
 /**

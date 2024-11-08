@@ -1,6 +1,7 @@
 
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const setEvents = require('./src/events.cjs');
 
 function createWindow ()
 {
@@ -11,7 +12,7 @@ function createWindow ()
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
-			preload: path.join(__dirname, 'preload.cjs')
+			preload: path.join(__dirname, 'src/preload.cjs')
 		},
 		icon: path.join(__dirname, 'icon.png')
 	};
@@ -22,19 +23,9 @@ function createWindow ()
 	mainWindow.loadFile('index.html');
 
 	mainWindow.webContents.openDevTools();
+
+	setEvents(mainWindow);
 }
 
 // When on ready, calls the create window function
 app.on('ready', createWindow);
-
-// Quit when all windows are closed
-app.on('window-all-closed', () =>
-{
-	console.log("Shutting down...");
-});
-
-ipcMain.on('close-app', () =>
-{
-	app.quit();
-});
-

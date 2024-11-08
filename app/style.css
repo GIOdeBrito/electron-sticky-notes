@@ -25,7 +25,6 @@ header > div[role="drag-area"] {
 }
 
 header > img {
-	cursor: pointer;
 	margin: .65rem;
 	width: 19.2px;
 	height: 19.2px;
