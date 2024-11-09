@@ -19,7 +19,7 @@ function createWindow ()
 
 	const mainWindow = new BrowserWindow(winSettings);
 
-	setEvents(mainWindow);
+	setEvents();
 
 	mainWindow.setMenu(null);
 	mainWindow.loadFile('index.html');

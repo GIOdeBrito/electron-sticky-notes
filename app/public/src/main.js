@@ -1,8 +1,6 @@
 
 /* Main file for sticky notes */
 
-//import configureApplication from "./config.js";
-
 window.addEventListener('load', function ()
 {
 	defineControls();
@@ -16,8 +14,6 @@ function defineControls ()
 {
 	let header = document.querySelector('header');
 
-	//let icons = Array.from(header.querySelectorAll('img'));
-
 	header.children[1].onclick = () => quit();
 
 	let textarea = document.querySelector('textarea[name="main-text"]');
@@ -30,7 +26,7 @@ function defineControls ()
 
 		let content = ev.target.value;
 
-		inputUpdate = setTimeout(() => saveInputToDisk(content), 500);
+		inputUpdate = setTimeout(() => saveTextToDatabase(content), 500);
 	};
 }
 
@@ -38,9 +34,11 @@ function defineControls ()
 * This function's purpose is to write to disk what was written on the main text area.
 * @returns {void}
 */
-function saveInputToDisk (content)
+async function saveTextToDatabase (content)
 {
-	console.log(content);
+	let response = await aCallBeyond('setTextNote', base64Encode(content), NOTE_ID);
+
+	console.log('Text was saved:', response);
 }
 
 /**

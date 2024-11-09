@@ -29,7 +29,7 @@ function instantiateDatabase ()
 /**
 * Runs a query and returns only the first row.
 * @param {string} input - Can either be a SQL command or a path to a file.
-* @param {object} options - Some extra configurations for the query.
+* @param {object} options - Extra configurations for the query.
 * @param {Array<string | number>} options.params - The parameters to be appended for the query.
 * @param {boolean} options.isFile - If the input parameter is a path to a file, this options must be set true.
 * @async
@@ -57,6 +57,39 @@ async function queryFirst (input, options = { params: [], isFile: false })
 			}
 
 			resolve(row);
+		});
+	});
+}
+
+/**
+* Runs an SQL command and commits changes.
+* @param {string} input - Can either be a SQL command or a path to a file.
+* @param {object} options - Extra configurations for the query.
+* @param {Array<string | number>} options.params - The parameters to be appended for the query.
+* @param {boolean} options.isFile - If the input parameter is a path to a file, this options must be set true.
+* @async
+* @returns {boolean}
+*/
+async function execute (input, options = { params: [], isFile: false })
+{
+	let command = input;
+
+	if(options?.isFile ?? false)
+	{
+		command = await readLocalFile(input);
+	}
+
+	return new Promise((resolve, reject) =>
+	{
+		DB.run(command, options?.params ?? [], (error) =>
+		{
+			if(error)
+			{
+				console.log('Error during script execution:', error.message);
+				reject(false);
+			}
+
+			resolve(true);
 		});
 	});
 }
@@ -98,6 +131,7 @@ function databasePath ()
 module.exports = {
 	instantiateDatabase,
 	queryFirst,
+	execute,
 	databasePath,
 	closeDatabase
 };

@@ -1,14 +1,13 @@
 
 const { app, ipcMain } = require('electron');
 const { openFile, readLocalFile } = require('./file-system.cjs');
-const { instantiateDatabase, queryFirst, closeDatabase } = require('./database.cjs');
+const { instantiateDatabase, queryFirst, execute, closeDatabase } = require('./database.cjs');
 
 /**
 * Set the many events for the application.
-* @param {BrowserWindow} window - The main browser window.
 * @returns {void}
 */
-function setEvents (window)
+function setEvents ()
 {
 	// Quit when all windows are closed
 	app.on('window-all-closed', () =>
@@ -43,8 +42,19 @@ function setWorldEvents ()
 
 		return data;
 	});
+
+	ipcMain.handle('set-text-content-annotation', async (event, content, id) =>
+	{
+		let response = await execute('./sql/updateNote.sql', { params: [content, id], isFile: true });
+
+		return response;
+	});
 }
 
+/**
+* Run this function to quit the application. It is necessary this way so the database is also closed.
+* @returns {void}
+*/
 function shutdownApplication ()
 {
 	console.log("Shutting down...");
