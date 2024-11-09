@@ -24,7 +24,7 @@ function createWindow ()
 	mainWindow.setMenu(null);
 	mainWindow.loadFile('index.html');
 
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
 }
 
 // When on ready, calls the create window function
