@@ -1,7 +1,8 @@
 
 :root {
 	--color-background-dark: #282828;
-	--color-main: #0d910d;
+	--color-main: #70d263;
+	--color-main-hover: #45a239;
 }
 
 html, body {

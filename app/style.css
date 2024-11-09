@@ -25,10 +25,14 @@ header > div[role="drag-area"] {
 }
 
 header > img {
-	margin: .65rem;
+	padding: .65rem;
 	width: 19.2px;
 	height: 19.2px;
 	user-select: all;
+}
+
+header > img:hover {
+	background: var(--color-main-hover);
 }
 
 main {

@@ -6,4 +6,4 @@ async function configureApplication ()
 	let response = await window.electronAPI.readConfig();
 }
 
-export default configureApplication;
+//export default configureApplication;

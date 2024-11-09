@@ -4,7 +4,8 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electronAPI',
 {
 	closeApp: () => closeApplication(),
-	readConfig: () => readConfigFile()
+	readConfig: () => readConfigFile(),
+	getLatestNote: () => getLatestNote()
 });
 
 /**
@@ -18,9 +19,16 @@ function closeApplication ()
 
 async function readConfigFile ()
 {
-	let filepath = 'notes-config.txt';
+	const filepath = 'notes-config.txt';
 
 	let data = await ipcRenderer.invoke('open-config');
+
+	return data;
+}
+
+async function getLatestNote ()
+{
+	let data = await ipcRenderer.invoke('get-latest-note-entry');
 
 	return data;
 }

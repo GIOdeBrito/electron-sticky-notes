@@ -19,12 +19,12 @@ function createWindow ()
 
 	const mainWindow = new BrowserWindow(winSettings);
 
+	setEvents(mainWindow);
+
 	mainWindow.setMenu(null);
 	mainWindow.loadFile('index.html');
 
 	mainWindow.webContents.openDevTools();
-
-	setEvents(mainWindow);
 }
 
 // When on ready, calls the create window function
